@@ -1,0 +1,18 @@
+name: Directory Change Notification
+
+on:
+  push:
+    paths:
+      - 'https://github.com/intel-restricted/infrastructure.bcs.framework/tree/main/BCS_RUN/snipgen_py' # Triggers only when files in this directory change
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Trigger Notification
+        run: |
+          echo "Changes were pushed to the watched directory!"
+          # You can add a curl command here to ping a Discord/Slack webhook
